@@ -1,0 +1,52 @@
+server:
+  port: 8083
+
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN:-%5p} %m%n"
+
+spring:
+  zipkin:
+    base-url: http://localhost:9411/
+  sleuth:
+    sampler:
+      probability: 1.0
+  cloud:
+    gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins:
+              - "http://localhost:4200"
+            allowedMethods:
+              - "*"
+            allowedHeaders:
+              - "*"
+            allowCredentials: true
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: cocktail-service
+          uri: lb://cocktail-service
+          predicates:
+            - Path=/cocktail/**
+          filters:
+            - RewritePath=/cocktail/(?<path>.*), /$\{path}
+        - id: popupbar-service
+          uri: lb://popupbar-service
+          predicates:
+            - Path=/popupbar/**
+          filters:
+            - RewritePath=/popupbar/(?<path>.*), /$\{path}
+        - id: messaging-service
+          uri: lb://messaging-service
+          predicates:
+            - Path=/messaging/**
+          filters:
+            - RewritePath=/messaging/(?<path>.*), /$\{path}
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8061/eureka/

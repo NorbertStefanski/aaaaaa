@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PopupBarMobile.Views.LoginView"
+             xmlns:local="clr-namespace:PopupBarMobile.Converters"
+             Title="Login for 10% discount">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:InverseBooleanConverter x:Key="InverseBooleanConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <VerticalStackLayout Padding="10,0,10,0" VerticalOptions="Center">
+        <Button IsEnabled="{Binding IsLoggedIn, Mode=OneWay, Converter={StaticResource InverseBooleanConverter}}" VerticalOptions="Center" Text="Login" Command="{Binding LoginCommand}" WidthRequest="200"/>
+        <Label VerticalOptions="Center" />
+        <Button VerticalOptions="Center" Text="Logout" Command="{Binding LogoutCommand}" WidthRequest="200"/>
+        <ActivityIndicator IsRunning="{Binding IsBusy}" />
+    </VerticalStackLayout>
+</ContentPage>

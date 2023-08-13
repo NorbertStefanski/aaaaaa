@@ -1,0 +1,38 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PopupBarMobile.Views.CheckoutView"
+             xmlns:local="clr-namespace:PopupBarMobile.Converters"
+             Title="Your Order:">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout>
+        <ListView ItemsSource="{Binding SelectedCocktails}" IsEnabled="False">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Label Text="{Binding Cocktail.Name}" Grid.Column="0" Margin="10,0,0,0" VerticalTextAlignment="Center" />
+                            <Label Text="{Binding Price}" Grid.Column="1" Margin="0,0,10,0" VerticalTextAlignment="Center" HorizontalTextAlignment="End" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackLayout Margin="0,20,0,20" HorizontalOptions="Center">
+            <Label x:Name="DiscountLabel" Text="Discount Applied" IsVisible="{Binding ApplyDiscount, Converter={StaticResource BoolToVisibilityConverter}}" HorizontalOptions="Center" Margin="0,0,0,20" Background="red"/>
+            <Label Text="Order Total" TextDecorations="Underline" HorizontalOptions="Center" FontAttributes="Bold"/>
+            <Label x:Name="orderTotalLabel" Text="{Binding OrderTotal, StringFormat='{0:C}'}" HorizontalOptions="Center" Margin="0,0,0,20"/>
+            <Frame Padding="5" CornerRadius="5" BorderColor="Black" WidthRequest="150">
+                <Entry x:Name="tableIdEntry" Placeholder="Enter table ID" Keyboard="Numeric" Text="{Binding TableId}" HorizontalOptions="Center" />
+            </Frame>
+        </StackLayout>
+        <Button Text="CONFIRM ORDER" VerticalOptions="End" CornerRadius="10" WidthRequest="200" Margin="10,0,10,10" Command="{Binding ConfirmOrderCommand}"/>
+    </StackLayout>
+</ContentPage>

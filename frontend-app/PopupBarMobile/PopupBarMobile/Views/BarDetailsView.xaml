@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PopupBarMobile.Views.BarDetailsView"
+             Title="BarDetailsView">
+    <StackLayout>
+        <ListView x:Name="myListView" ItemsSource="{Binding MenuItems}" ItemSelected="OnCocktailSelected" Background="white" SeparatorColor="Black">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Label Text="{Binding Cocktail.Name}" Grid.Column="0" Margin="5,5,5,5" VerticalOptions="Center" />
+                            <Label Text="€" Grid.Column="1" Margin="0,5,5,5" VerticalTextAlignment="Center" />
+                            <Label Text="{Binding Price}" Grid.Column="1" Margin="10,5,5,5" VerticalOptions="Center"  />
+                            <Grid Grid.Column="2" Margin="0,0,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <StackLayout Grid.Column="0" Margin="5,5,5,5">
+                                    <Button Text="+" Clicked="OnAddButtonClicked" BindingContext="{Binding .}" FontSize="11" CornerRadius="5" />
+                                </StackLayout>
+                                <Label x:Name="countLabel" Text="0" Grid.Column="1" Margin="5,5,5,5" VerticalOptions="Center" />
+                                <StackLayout Grid.Column="2" Margin="5,5,5,5">
+                                    <Button Text="-"  BindingContext="{Binding .}" Clicked="OnSubtractButtonClicked" FontSize="11" CornerRadius="5" />
+                                </StackLayout>
+                            </Grid>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button Text="TO CHECKOUT" VerticalOptions="End" CornerRadius="10" WidthRequest="200" Margin="10,0,10,10" Clicked="OnGoToCheckoutButtonClicked"/>
+    </StackLayout>
+</ContentPage>

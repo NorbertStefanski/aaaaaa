@@ -1,0 +1,20 @@
+<div class="loginView flexMid">
+  <div id="content">
+    <h1>Welcome!</h1>
+    <form action="" method="get" #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+      <div *ngIf="showError" class="errorMessage">Username or password is incorrect</div>
+      <div class="input-bar">
+        <label for="name" class="labelLogin">username</label>
+        <input type="text" id="name" class="input" [(ngModel)]="username" name="username" #emailRef="ngModel" required
+          minlength="4" placeholder="Username">
+      </div>
+      <div class="input-bar">
+        <label for="password">password</label>
+        <input type="password" id="password" class="input" [(ngModel)]="password" name="password" #passwordRef="ngModel"
+          required minlength="4" placeholder="Password">
+      </div>
+      <small *ngIf="passwordRef.errors?.['required'] && emailRef.touched">password is required!</small>
+      <button type="submit" id="btn" click="">Login</button>
+    </form>
+  </div>
+</div>

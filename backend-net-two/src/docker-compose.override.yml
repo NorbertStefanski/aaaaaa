@@ -1,0 +1,42 @@
+version: '3.4'
+
+services:
+  ordermanagement.api:
+    environment:
+      - EventBus__RabbitMQ__Host=rabbitmq
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ConnectionString=Data Source=sqldata;Database=PxlPopup.OrderManagement;User Id=sa;Password=Pass@word;TrustServerCertificate=True;
+      - Urls__IdentityUrl=http://identity.ui
+    ports:
+      - "5000:80"
+      - "5001:443"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+  sqldata:
+    environment:
+      - SA_PASSWORD=Pass@word
+      - ACCEPT_EULA=Y
+    ports:
+      - "1433:1433" #make db server accessible for host system on port 1433(Server name: localhost)
+    volumes:
+      - pxppopup-sqldata:/var/opt/mssql
+  rabbitmq:
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+
+  identity.ui:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+    ports:
+      - "9000:80"
+      - "9001:443"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+volumes:
+  pxppopup-sqldata:
+    external: false

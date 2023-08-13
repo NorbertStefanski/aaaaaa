@@ -1,0 +1,110 @@
+<app-navbar></app-navbar>
+<div class="pageContent flex">
+    <div class="navigationMenu flexVertical">
+        <div class="navigationMenuItem flexMid" (click)="toCocktail()"><img src="/assets/cocktail2.png" class="barIcon" alt="cocktail"></div>
+        <div class="navigationMenuItem flexMid" (click)="toPopup()"><img src="/assets/bar.webp" class="barIcon" alt="bar"></div>
+        <div class="navigationMenuItem flexMid" (click)="toOrder()"><img src="/assets/orderIcon.png" class="barIcon" alt="order"></div>
+    </div>
+    <div class="pageView">
+        <div>
+            <h2 class="pageTitleBlock flexCenter">COCKTAIL MANAGEMENT</h2>
+        </div>
+        <div class="flexBetween">
+            <input type="text" name="searchString" placeholder="Zoek cocktail op naam" (input)="getValue($event)" [(ngModel)]="searchString" class="searchBar">
+            <button class="addCocktailButton" (click)="openCocktailForm()">COCKTAIL +</button>
+        </div>
+        <div class="cocktailListBlock">
+            <div class="cocktailListBlockHeader flex">
+                <div class="nameHeader flexCenter">
+                    <p>Naam</p>
+                </div>
+                <div class="eanHeader flexCenter">
+                    <p>EAN-13</p>
+                </div>
+                <div class="priceHeader flexCenter">
+                    <p>Aankoopprijs</p>
+                </div>
+            </div>
+
+            <div *ngIf="cocktails$">
+                <div *ngFor="let item of cocktailFilterArray | async" class="cocktailListBlockItem flex">
+                    <div class="flexCenter nameItem">
+                        <div class="cocktailIcon"></div>
+                        <div class="">
+                            <p>{{item.name}}</p>
+                        </div>
+                    </div>
+                    <div class="eanItem flexCenter">
+                        <p>{{item.serialNumber}}</p>
+                    </div>
+                    <div class="priceItem flexBetween">
+                        <div class="">
+                            <p>{{item.purchasePrice | currency:"EUR":true}}</p>
+                        </div>
+                        <div class="flex">
+                            <button class="editButton flexMid" (click)="setPutVariablesAndOpenForm(item.serialNumber, item.name, item.purchasePrice)">
+                                <p>Bewerk</p>
+                            </button>
+                            <button class="deleteButton flexMid" (click)="processDelete(item.serialNumber)">
+                                <p>Verwijder</p>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="addCocktailFormBlock flexMid noFormDisplay">
+        <form class="addCocktailForm flexForm" #cocktailForm="ngForm" (ngSubmit)="onAddCocktail()">
+            <h3 class="closeIcon" (click)="closeCocktailForm()">X</h3>
+            <div>
+                <h3 class="formTitle">VOEG COCKTAIL TOE</h3>
+                <label class="formLabel">Cocktailnaam</label>
+                <br />
+                <input type="text" name="name" [(ngModel)]="cocktailName" class="inputField">
+                <br />
+                <label class="formLabel">EAN-13 Code</label>
+                <br />
+                <input type="text" name="serialNumber" [(ngModel)]="serialNumber" class="inputField">
+                <br />
+                <label class="formLabel">Aankoopprijs</label>
+                <br />
+                <input type="text" name="purchasePrice" [(ngModel)]="purchasePrice" class="inputField">
+                <br />
+            </div>
+            <div>
+                <input type="submit" class="addCocktailFormButton"  value="Voeg cocktail toe">
+            </div>
+        </form>
+    </div>
+
+    <div class="updateCocktailFormBlock flexMid noUpdateFormDisplay ">
+        <form class="updateCocktailForm flexForm" #cocktailForm="ngForm" (ngSubmit)="onUpdateCocktail()">
+            <h3 class="closeIcon" (click)="closeUpdateCocktailForm()">X</h3>
+            <div>
+                <h3 class="formTitle">UPDATE COCKTAIL</h3>
+                <label class="formLabel">Cocktailnaam</label>
+                <br />
+                <input type="text" name="name" [(ngModel)]="cocktailName" class="inputField">
+                <br />
+                <label class="formLabel">EAN-13 Code</label>
+                <br />
+                <input type="text" name="serialNumber" [(ngModel)]="serialNumber" class="inputFieldReadonly" readonly>
+                <br />
+                <label class="formLabel">Aankoopprijs</label>
+                <br />
+                <input type="text" name="purchasePrice" [(ngModel)]="purchasePrice" class="inputField">
+                <br />
+            </div>
+            <div>
+                <input type="submit" class="addCocktailFormButton"  value="Update cocktail">
+            </div>
+        </form>
+    </div>
+
+    <div id="snackbar">Cocktail toegevoegd!</div>
+    <div id="snackbarUpdate">Cocktail geüpdatet!</div>
+    <div id="snackbarDelete">Cocktail verwijderd!</div>
+    <div id="snackbarCocktailValidation">EAN13-code moet geldig en 13 tekens lang zijn!</div>
+</div>

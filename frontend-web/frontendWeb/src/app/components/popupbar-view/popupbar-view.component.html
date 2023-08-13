@@ -1,0 +1,56 @@
+<app-navbar></app-navbar>
+<div class="pageContent flex">
+    <div class="navigationMenu flexVertical">
+        <div class="navigationMenuItem flexMid" (click)="toCocktail()"><img src="/assets/cocktail2.png" class="barIcon"
+                alt="cocktail"></div>
+        <div class="navigationMenuItem flexMid" (click)="toPopup()"><img src="/assets/bar.webp" class="barIcon"
+                alt="bar"></div>
+        <div class="navigationMenuItem flexMid" (click)="toOrder()"><img src="/assets/orderIcon.png" class="barIcon" alt="order"></div>
+    </div>
+    <div class="pageView">
+        <div>
+            <h2 class="pageTitleBlock flexCenter">POP-UPS</h2>
+        </div>
+        <div class="flexRight">
+            <button class="addPopupButton" (click)="openPopupForm()">POP-UP +</button>
+        </div>
+        <div class="popupbarListBlock" *ngIf="popups$">
+            <div class="popupBarCard" *ngFor="let item of popups$ | async">
+                <div class="popupBarCardImage"></div>
+                <div class="popupBarCardInnerSection">
+                    <h3 class="popupBarName">{{item.name}}</h3>
+                    <div class="propertiesOfPopupBar">
+                        <p class="popupBarPlace">{{item.address}}</p>
+                        <p class="amountOfCocktailsInPopupBar">{{item.menuItems.length}} cocktails</p>
+                        <p class="popupBarDescription">{{item.description}}</p>
+                    </div>
+                </div>
+                <div class="popupBarCardButtonBlock">
+                    <a [routerLink]="['/popup-menu',item.id]" class="popupBarCardButton">Bewerk menu</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="addPopupFormBlock flexMid noPopupFormDisplay">
+        <form class="addPopupForm flexForm" #cocktailForm="ngForm" (ngSubmit)="onAddPopup()">
+            <h3 class="closeIcon" (click)="closePopupForm()">X</h3>
+            <div>
+                <h3 class="formTitle">VOEG POPUPBAR TOE</h3>
+                <label class="formLabel">Popupbarnaam</label>
+                <br />
+                <input type="text" name="name" [(ngModel)]="popupName" class="inputField">
+                <br />
+                <label class="formLabel">Adres</label>
+                <br />
+                <input type="text" name="address" [(ngModel)]="address" class="inputField">
+                <label class="formLabel">Bescrhijving</label>
+                <br />
+                <input type="text" name="description" [(ngModel)]="description" class="inputField">
+                <br />
+            </div>
+            <div>
+                <input type="submit" class="addPopupFormButton" value="Voeg popupbar toe">
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PopupBarMobile.Views.CocktailDetailsView"
+             Title="{Binding Cocktail.Name}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="DetailedInfoLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            <Style x:Key="DetailedInfoSubStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="200" />
+            </Grid.RowDefinitions>
+            <Image Source="{Binding Cocktail.ImageUrl}" Grid.Row="0" HeightRequest="200" VerticalOptions="StartAndExpand" Aspect="AspectFill" />
+        </Grid>
+        <Label Text="Detailed Info" Style="{StaticResource DetailedInfoLabelStyle}" Margin="10,10,0,0"/>
+        <BoxView HeightRequest="10" Color="Transparent" />
+        <Label Text="Ingredients:" Style="{StaticResource DetailedInfoSubStyle}" Margin="10,0,0,0"/>
+        <Label Text="pilaf, radish, jelly bean, yam, kiwi fruit, pepper, tuber, yam, seaweed, cannellini beans, broccoli, cider, watercress, orange, couscous, persimmon, sauerkraut, wheat, bean sauce, sea cucumber" Margin="10,0,0,0"/>
+        <BoxView HeightRequest="10" Color="Transparent"/>
+        <Label Text="Serial Number:" Style="{StaticResource DetailedInfoSubStyle}" Margin="10,0,0,0"/>
+        <Label Text="{Binding Cocktail.Id}" Margin="10,0,0,0" />
+        <BoxView HeightRequest="10" Color="Transparent"/>
+        <Label Text="Price:" Style="{StaticResource DetailedInfoSubStyle}" Margin="10,0,0,0"/>
+        <Label Text="{Binding Price, StringFormat='{0:C}'}" FontAttributes="Bold" FontSize="12" TextColor="Green" Margin="10,0,0,0"/>
+    </StackLayout>
+</ContentPage>
+

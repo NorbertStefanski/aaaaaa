@@ -1,0 +1,30 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:PopupBarMobile.Views"
+             x:Class="PopupBarMobile.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
+                <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+
+    <Application.MainPage>
+        <Shell Background="Gray">
+            <TabBar x:Name="MenuTabs">
+                <Tab Icon="beer.svg">
+                    <ShellContent ContentTemplate="{DataTemplate local:BarCatalogView}"/>
+                </Tab>
+                <Tab Icon="history.svg">
+                    <ShellContent ContentTemplate="{DataTemplate local:OrderHistoryView}"/>
+                </Tab>
+                <Tab Icon="login.svg">
+                    <ShellContent ContentTemplate="{DataTemplate local:LoginView}"/>
+                </Tab>
+            </TabBar>
+        </Shell>
+    </Application.MainPage>
+</Application>

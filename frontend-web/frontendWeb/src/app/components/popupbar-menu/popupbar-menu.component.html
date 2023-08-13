@@ -1,0 +1,91 @@
+<app-navbar></app-navbar>
+<div class="pageContent flex">
+    <div class="navigationMenu flexVertical">
+        <div class="navigationMenuItem flexMid" (click)="toCocktail()"><img src="/assets/cocktail2.png" class="barIcon"
+                alt="cocktail"></div>
+        <div class="navigationMenuItem flexMid" (click)="toPopup()"><img src="/assets/bar.webp" class="barIcon"
+                alt="bar"></div>
+        <div class="navigationMenuItem flexMid" (click)="toOrder()"><img src="/assets/orderIcon.png" class="barIcon" alt="order"></div>
+    </div>
+    <div class="pageView" *ngIf="popup">
+        <div class="flexMid pageTitleBlock">
+            <a routerLink="/popup/" class="backButton">Terug</a>
+            <h2 class="pageTitleBlock flexCenter">{{popup.name}} - Menu</h2>
+            <button class="deleteBarButton" (click)="processDeleteBar(popup.id)">Verwijder bar</button>
+        </div>
+        <div class="flexRight marginPopupMenu">
+        </div>
+        <div class="popupbarMenuManagementView">
+            <div class="flexAround">
+                <div class="cockailListView" *ngIf="cocktails$">
+                    <div class="cocktailListViewElement flexBetween cocktailListViewHeader">
+                        <div>Alle cocktails</div>
+                        <div class="textBlack flexMid">Naam/EAN-code</div>
+                        <div class="textBlack flexMid">Aankoopprijs</div>
+                        <div class="amountOfCocktails flexMid">{{(cocktails$ | async)?.length}}</div>
+                    </div>
+                    <div class="cocktailListViewElement flexAround" *ngFor="let item of cocktails$ | async">
+                        <div class="cocktailIcon"></div>
+                        <div>
+                                <div class="cocktailListElementName">{{item.name}}</div>
+                                <div>{{item.serialNumber}}</div>
+                        </div>
+                        <div>
+                            <div>{{item.purchasePrice | currency:"EUR":true}}</div>
+                        </div>
+                        <button class="addCocktailToMenuButton" (click)="openMenuItemForm(item.name, item.serialNumber, item.purchasePrice)">+</button>
+                    </div>
+                </div>
+                <div class="popupbarMenuListview" *ngIf="menuItems$">
+                    <div class="cocktailListViewElement flexBetween cocktailListViewHeader" >
+                        <div>Menu items</div>
+                        <div class="textBlack flexMid">Naam/EAN-code</div>
+                        <div class="textBlack flexMid">Aankoopprijs</div>
+                        <div class="textBlack flexMid">Verkoopprijs</div>
+                        <div class="amountOfCocktails flexMid">{{(menuItems$ | async)?.length}}</div>
+                    </div>
+                    <div class="cocktailListViewElement flexAround" *ngFor="let item of menuItems$ | async">
+                        <div class="cocktailIcon"></div>
+                        <div>
+                            <div class="cocktailListElementName">{{item.itemName}}</div>
+                            <div>{{item.itemId}}</div>
+                        </div>
+                        <div>
+                            <div class="purchasePriceColor">{{item.purchasePrice | currency:"EUR":true}}</div>
+                        </div>
+                        <div class="sellingPriceColor">{{item.sellingPrice | currency:"EUR":true}}</div>
+                        <button class="addCocktailToMenuButton" (click)="processDelete(item.id)">-</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="addMenuItemFormBlock flexMid noMenuItemFormDisplay">
+        <form class="addMenuItemForm flexForm" #cocktailForm="ngForm" (ngSubmit)="onAddMenuItem()">
+            <h3 class="closeIcon" (click)="closeMenuItemForm()">X</h3>
+            <div>
+                <h3 class="formTitle">ADD COCKTAIL TO BAR MENU</h3>
+                <label class="formLabel">Cocktail name</label>
+                <br />
+                <input type="text" name="name" [(ngModel)]="cocktailName" class="inputFieldReadonly" readonly>
+                <br />
+                <label class="formLabel">EAN-13 Code</label>
+                <br />
+                <input type="text" name="serialNumber" [(ngModel)]="serialNumber" class="inputFieldReadonly" readonly>
+                <br />
+                <label class="formLabel">Purchase price</label>
+                <br />
+                <input type="text" name="purchasePrice" [(ngModel)]="purchasePrice" class="inputFieldReadonly" readonly>
+                <br />
+                <label class="formLabel">Selling price</label>
+                <br />
+                <input type="text" name="sellingPrice" [(ngModel)]="sellingPrice" class="inputField">
+                <br />
+            </div>
+            <div>
+                <input type="submit" class="addMenuItemFormButton" value="Add cocktail">
+            </div>
+        </form>
+    </div>
+    <div id="snackbarMenuItemError">MenuItem bestaat al!</div>
+</div>

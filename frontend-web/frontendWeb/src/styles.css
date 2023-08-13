@@ -1,0 +1,893 @@
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+
+.navbar {
+  width: 100%;
+  height: 50px;
+  background-color: #272A2F;
+  color: white;
+
+}
+
+.innerNavbar {
+  margin-right: 30px;
+  margin-left: 30px;
+  height: 50px;
+}
+
+.flexBetween {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flexAround {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.flexMid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbarIcon {}
+
+
+.userIcon {
+  height: 35px;
+  width: 35px;
+  border-radius: 50px;
+  background-color: lightgrey;
+  margin-right: 10px;
+}
+
+.pageContent {
+  height: calc(100vh - 50px);
+}
+
+.navigationMenu {
+  height: 100%;
+  width: 70px;
+  border-right: 1px solid #E7E7E7;
+}
+
+.navigationMenuItem {
+  height: 40px;
+  width: 40px;
+  margin-top: 30px;
+  background-color: #F6F7FA;
+  border-radius: 5px;
+}
+
+.navigationMenuItem:hover {
+  cursor: pointer;
+  background-color: #E7E7E7;
+}
+
+.flexVertical {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flex {
+  display: flex;
+}
+
+.flexCenter {
+  display: flex;
+  align-items: center;
+}
+
+.flexRight {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.pageTitleBlock {
+  height: 70px;
+  width: calc(100% - 30px);
+  color: black;
+  border-bottom: 1px solid #E7E7E7;
+  padding-left: 30px;
+}
+
+.pageView {
+  width: calc(100% - 30px);
+}
+
+.addCocktailButton {
+  margin-right: 30px;
+  background-color: #FE6C46;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 25px;
+  padding-right: 25px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: none;
+}
+
+.deleteBarButton {
+  margin-right: 55px;
+  background-color: #FE6C46;
+  border-radius: 10px;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  width: 160px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 25px;
+  padding-right: 25px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: none;
+}
+
+.deleteBarButton:hover {
+  cursor: pointer;
+}
+
+.addCocktailButton:hover {
+  cursor: pointer;
+}
+
+.addPopupButton {
+  margin-right: 30px;
+  background-color: #FE6C46;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 25px;
+  padding-right: 25px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: none;
+}
+
+.addPopupButton:hover {
+  cursor: pointer;
+}
+
+.cocktailListBlock {
+  width: calc(100% - 60px);
+  height: 75%;
+  overflow-y: scroll;
+  border: 1px solid #E7E7E7;
+  border-radius: 5px;
+  margin-left: 30px;
+  margin-right: 30px;
+  scrollbar-width: thin;
+}
+
+.cocktailListBlock::-webkit-scrollbar {
+  width: 10px;
+  background-color: darkgrey;
+  height: 100px;
+}
+
+.cocktailListBlock::-webkit-scrollbar-track {
+  background-color: #E7E7E7;
+}
+
+.cocktailListBlock::-webkit-scrollbar-thumb {
+  background-color: darkgray;
+  height: 50px;
+}
+
+.cocktailListBlockHeader {
+  height: 50px;
+  width: calc(100% - 140px);
+  color: #ADADAD;
+  position: fixed;
+  background-color: white;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  font-weight: 600;
+  border-bottom: 1px solid #E7E7E7;
+}
+
+.cocktailListBlockItem {
+  height: 50px;
+  width: 100%;
+  color: black;
+  border-bottom: 1px solid #E7E7E7;
+}
+
+.cocktailListBlockItem:first-of-type {
+  margin-top: 50px;
+}
+
+.nameHeader {
+  width: 25%;
+  height: 100%;
+  border-right: 1px solid #E7E7E7;
+  padding-left: 30px;
+}
+
+.eanHeader {
+  width: 25%;
+  height: 100%;
+  border-right: 1px solid #E7E7E7;
+  padding-left: 30px;
+}
+
+.priceHeader {
+  padding-left: 30px;
+}
+
+.nameItem {
+  width: 25%;
+  height: 100%;
+  border-right: 1px solid white;
+  padding-left: 30px;
+}
+
+.eanItem {
+  width: 25%;
+  height: 100%;
+  border-right: 1px solid white;
+  padding-left: 30px;
+}
+
+.priceItem {
+  padding-left: 30px;
+  width: calc(50% - 120px);
+  margin-right: 30px;
+}
+
+.cocktailIcon {
+  width: 30px;
+  height: 30px;
+  background-color: #FFCC68;
+  border-radius: 50px;
+  margin-right: 10px;
+}
+
+.editButton {
+  width: 80px;
+  height: 40px;
+  border-radius: 5px;
+  font-weight: 600;
+  background-color: #F6F7FA;
+  color: #8B8B8B;
+  border: none;
+}
+
+.deleteButton {
+  margin-left: 10px;
+  width: 80px;
+  height: 40px;
+  background-color: white;
+  border-radius: 5px;
+  font-weight: 600;
+  border: 1px solid #FE6C46;
+  color: #FE6C46;
+}
+
+.editButton:hover {
+  cursor: pointer;
+}
+
+.deleteButton:hover {
+  cursor: pointer;
+}
+
+.loginView {
+  height: 100vh;
+}
+
+/* POPUPBAR VIEW */
+
+.popupbarListBlock {
+  width: calc(97% - 60px);
+  margin-left: calc(3% + 30px);
+  margin-right: 30px;
+  display: flex;
+  flex-wrap: wrap;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 50px;
+  grid-row-gap: 50px;
+}
+
+.popupBarCard {
+  height: 500px;
+  width: 100%;
+  border: 1px solid #E7E7E7;
+  border-radius: 15px;
+  position: relative;
+}
+
+.popupBarCardImage {
+  height: 200px;
+  width: 100%;
+  background-color: #84DECE;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.popupBarCardInnerSection {
+  height: 300px;
+  width: 100%;
+
+}
+
+.popupBarName {
+  font-weight: 600;
+  font-size: 20px;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.popupBarPlace {
+  font-weight: 600;
+}
+
+.amountOfCocktailsInPopupBar {
+  font-weight: 600;
+  color: #0056D7;
+}
+
+.popupBarDescription {
+  width: 100%;
+  color: #797979;
+  margin-top: 10px;
+  height: 100px;
+  text-overflow: none;
+}
+
+.propertiesOfPopupBar {
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.popupBarCardButtonBlock {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100px;
+  border-top: 1px solid #E7E7E7;
+}
+
+.popupBarCardButton {
+  border: none;
+  display: inline-block;
+  width: calc(100% - 60px);
+  margin-left: 30px;
+  margin-right: 30px;
+  height: 70px;
+  margin-top: 15px;
+  border-radius: 10px;
+  color: #8B8B8B;
+  text-align: center;
+  line-height: 70px;
+  background-color: #F6F7FA;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.popupBarCardButton:hover {
+  cursor: pointer;
+}
+
+.addCocktailFormBlock {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100vh;
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.09);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(1.7px);
+  -webkit-backdrop-filter: blur(1.7px);
+}
+
+.addPopupFormBlock {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100vh;
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.09);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(1.7px);
+  -webkit-backdrop-filter: blur(1.7px);
+}
+
+.addMenuItemFormBlock {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100vh;
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.09);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(1.7px);
+  -webkit-backdrop-filter: blur(1.7px);
+}
+
+.flexForm {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-around;
+}
+
+.noFormDisplay {
+  display: none;
+}
+
+.noUpdateFormDisplay {
+  display: none;
+}
+
+.noPopupFormDisplay {
+  display: none;
+}
+
+.noMenuItemFormDisplay {
+  display: none;
+}
+
+.inputField {
+  height: 50px;
+  width: 97%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #E7E7E7;
+  border-radius: 5px;
+  padding-left: 10px;
+}
+
+.inputFieldReadonly {
+  height: 50px;
+  width: 97%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #E7E7E7;
+  background-color: #F6F7FA;
+  border-radius: 5px;
+  padding-left: 10px;
+}
+
+.closeIcon {
+  position: absolute;
+  right: 30px;
+  top: 18px;
+  color: #ccc;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.closeIcon:hover {
+  color: black;
+  cursor: pointer;
+}
+
+.backButton {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 8px;
+  display: inline-block;
+  background-color: #F6F7FA;
+  color: black;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.formLabel {}
+
+.addCocktailFormButton {
+  margin-right: 30px;
+  background-color: #FE6C46;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 10px;
+  color: white;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 25px;
+  padding-right: 25px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: 5px;
+  height: 60px;
+  width: 100%;
+  border: none;
+}
+
+.addPopupFormButton {
+  margin-right: 30px;
+  background-color: #FE6C46;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 10px;
+  color: white;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 25px;
+  padding-right: 25px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: 5px;
+  height: 60px;
+  width: 100%;
+  border: none;
+}
+
+.addCocktailFormButton:hover {
+  cursor: pointer;
+}
+
+.addMenuItemFormButton {
+  margin-right: 30px;
+  background-color: #FE6C46;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 10px;
+  color: white;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 25px;
+  padding-right: 25px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: 5px;
+  height: 60px;
+  width: 100%;
+  border: none;
+}
+
+.addMenuItemFormButton:hover {
+  cursor: pointer;
+}
+
+.formTitle {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.barIcon {
+  max-height: 32px;
+  max-width: 32px;
+  object-fit: contain;
+  margin: auto;
+}
+
+.updateCocktailFormBlock {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100vh;
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.09);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(1.7px);
+  -webkit-backdrop-filter: blur(1.7px);
+}
+
+.updateCocktailForm {
+  height: 600px;
+  width: 400px;
+  background-color: white;
+  position: relative;
+  border-radius: 20px;
+  -webkit-box-shadow: 0px 0px 20px -8px rgba(138, 138, 138, 1);
+  -moz-box-shadow: 0px 0px 20px -8px rgba(138, 138, 138, 1);
+  box-shadow: 0px 0px 20px -8px rgba(138, 138, 138, 1);
+  padding: 20px;
+}
+
+
+.addPopupForm {
+  height: 600px;
+  width: 400px;
+  background-color: white;
+  position: relative;
+  border-radius: 20px;
+  -webkit-box-shadow: 0px 0px 20px -8px rgba(138, 138, 138, 1);
+  -moz-box-shadow: 0px 0px 20px -8px rgba(138, 138, 138, 1);
+  box-shadow: 0px 0px 20px -8px rgba(138, 138, 138, 1);
+  padding: 20px;
+}
+
+.addCocktailForm {
+  height: 600px;
+  width: 400px;
+  background-color: white;
+  position: relative;
+  border-radius: 20px;
+  -webkit-box-shadow: 0px 0px 20px -8px rgba(138, 138, 138, 1);
+  -moz-box-shadow: 0px 0px 20px -8px rgba(138, 138, 138, 1);
+  box-shadow: 0px 0px 20px -8px rgba(138, 138, 138, 1);
+  padding: 20px;
+}
+
+.addMenuItemForm {
+  height: 600px;
+  width: 400px;
+  background-color: white;
+  position: relative;
+  border-radius: 20px;
+  -webkit-box-shadow: 0px 0px 20px -8px rgba(138, 138, 138, 1);
+  -moz-box-shadow: 0px 0px 20px -8px rgba(138, 138, 138, 1);
+  box-shadow: 0px 0px 20px -8px rgba(138, 138, 138, 1);
+  padding: 20px;
+}
+
+#snackbar {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 30px;
+  font-size: 17px;
+}
+
+#snackbar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+#snackbarUpdate {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 30px;
+  font-size: 17px;
+}
+
+#snackbarUpdate.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+#snackbarCocktailValidation {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+  background-color: red;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 30px;
+  font-size: 17px;
+}
+
+#snackbarCocktailValidation.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+#snackbarMenuItemError {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+  background-color: red;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 30px;
+  font-size: 17px;
+}
+
+#snackbarMenuItemError.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+#snackbarDelete {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+  background-color: #FE6C46;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 30px;
+  font-size: 17px;
+}
+
+#snackbarDelete.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+.cockailListView {
+  background-color: #F6F7FA;
+  height: 70vh;
+  width: 40%;
+  border-radius: 15px;
+  padding: 20px;
+}
+
+.cocktailListViewElement {
+  background-color: white;
+  border-radius: 10px;
+  border: 1px solid #E7E7E7;
+  height: 30px;
+  margin-bottom: 10px;
+  padding: 20px;
+}
+
+.popupbarMenuManagementView {
+  width: calc(100% - 70px);
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.cocktailBlockContent {
+  width: 100% ;
+}
+
+.cocktailListViewHeader {
+  font-weight: 600;
+  color: #0F6FFF;
+}
+
+.amountOfCocktails {
+  background-color: #F6F7FA;
+  border-radius: 5px;
+  width: 50px;
+  height: 30px;
+}
+
+.popupbarMenuListview {
+  width: 45%;
+  height: 70vh;
+  background-color: white;
+  border: 1px solid #E7E7E7;
+  border-radius: 15px;
+  padding: 20px;
+}
+
+.marginPopupMenu {
+  height: 50px;
+}
+
+.inputPriceBlock {
+  width: 40px;
+}
+
+.addCocktailToMenuButton {
+  height: 40px;
+  font-size: 18px;
+  font-weight: 700;
+  background-color: #FE6C46;
+  color: white;
+  border: none;
+  width: 40px;
+  border-radius: 10px;
+}
+
+.addCocktailToMenuButton:hover {
+  cursor: pointer;
+}
+
+.textBlack {
+  color: #ADADAD;
+  font-size: 14px;
+  padding-left: 20px;
+  border-left: 1px solid #E7E7E7;
+  height: 50px;
+}
+
+.searchBar {
+  border: 1px solid #E7E7E7;
+  margin-left: 30px;
+  height: 40px;
+  padding-left: 10px;
+  width: 300px;
+  border-radius: 5px;
+}
+
+
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;} 
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {bottom: 30px; opacity: 1;} 
+  to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+
+
+/*  MEDIA QUERY */
+@media only screen and (max-width: 1400px) {
+  .popupbarListBlock {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .popupbarListBlock {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media only screen and (max-width: 630px) {
+  .popupbarListBlock {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media only screen and (min-height: 101vh) {
+  .popupbarListBlock {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
